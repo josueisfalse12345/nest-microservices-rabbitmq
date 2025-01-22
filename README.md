@@ -19,7 +19,7 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
    cd <repository-directory>
    ```
 
-2. Construye y levanta los contenedores:
+2. Construye y levanta los contenedores dev:
    ```bash
    sudo docker-compose up -d
    ```
@@ -27,6 +27,7 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
    Este comando:
    - Construirá las imágenes de Docker para los microservicios.
    - Iniciará los servicios, incluyendo RabbitMQ y el microservicio.
+   - Esperar unos segundos el despliegue completo de la aplicacion.
 
 3. Verifica que RabbitMQ está funcionando accediendo a su interfaz de gestión:
    - URL: [http://localhost:15672](http://localhost:15672)

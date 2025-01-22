@@ -21,7 +21,7 @@ Asegúrate de tener instalados los siguientes programas en tu máquina:
 
 2. Construye y levanta los contenedores:
    ```bash
-   docker-compose up -d
+   sudo docker-compose up -d
    ```
 
    Este comando:

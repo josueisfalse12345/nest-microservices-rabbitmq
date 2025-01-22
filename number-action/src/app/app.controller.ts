@@ -10,6 +10,10 @@ export class AppController {
 
   @EventPattern('process_number')
   async handleNumberProcessing(@Payload() data: any) :Promise<Object>{
+    if(data < 0) {
+      return { error: "Debe ser un numero positivo"}
+    }
+    
     const numberRecive = parseInt(data, 10);
     if(isNaN(numberRecive))
       return { error: "Debe ser un numero"};

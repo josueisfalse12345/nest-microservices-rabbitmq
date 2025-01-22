@@ -9,3 +9,41 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+    networks:
+      - microservices
+
+
+  # Microservicio Number-Action
+  gateway:
+    image: node:20-alpine
+    container_name: "gateway"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3333:3333"
+    user: root 
+    command: sh -c "npm i && npx nx serve gateway"
+    depends_on:
+      - rabbitmq
+    networks:
+      - microservices
+    working_dir: /usr/src/app
+
+  number-action:
+    image: node:20-alpine
+    container_name: "number-action"
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "3000:3000"
+    user: root 
+    command: sh -c "npm i && npx nx serve number-action"
+    depends_on:
+      - rabbitmq
+    networks:
+      - microservices
+    working_dir: /usr/src/app
+
+networks:
+  microservices:
+    driver: bridge
